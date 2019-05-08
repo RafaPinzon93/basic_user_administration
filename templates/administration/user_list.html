@@ -16,7 +16,7 @@
                         <i class="fas fa-user circle"></i>
                         <span class="title">{{ user.first_name }}</span>
                         <p>{{ user.last_name }}</span>
-                        <a href="#!"><i class="material-icons">edit</i></a>
+                        <a href="{% url 'user_edit' pk=user.pk %}"><i class="material-icons">edit</i></a>
                         <a href="#!"><i class="material-icons">delete</i></a>
                     </li>
                 {% endfor %}
