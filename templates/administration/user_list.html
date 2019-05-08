@@ -5,5 +5,7 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Users</h1>
+    {% for user in object_list %}
+        {{ user }}
+    {% endfor %}
 {% endblock %}

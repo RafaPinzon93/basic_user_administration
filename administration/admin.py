@@ -12,7 +12,7 @@ class MyUserChangeForm(UserChangeForm):
 class CustomUserAdmin(UserAdmin):
     ADDITIONAL_USER_FIELDS = (
         (
-            None, {'fields': ('iban',)}
+            None, {'fields': ('iban', 'created_by',)}
         ),
     )
 
