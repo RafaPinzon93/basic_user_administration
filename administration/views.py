@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import UpdateView
+from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.shortcuts import render, redirect
 from django.urls import reverse
@@ -51,3 +52,8 @@ class UserUpdate(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         return reverse('user_list')
+
+
+class UserDetail(LoginRequiredMixin, DetailView):
+    model = User
+    template_name = "administration/user_detail.html"

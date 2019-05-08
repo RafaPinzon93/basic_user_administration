@@ -12,13 +12,13 @@
             <a href="{% url 'user_create' %}">Create User</a>
             <ul>
                 {% for user in object_list %}
-                    <li>
+                    <a href="{% url 'user_detail' pk=user.pk %}" class="collection-item">
                         <i class="fas fa-user circle"></i>
                         <span class="title">{{ user.first_name }}</span>
                         <p>{{ user.last_name }}</span>
                         <a href="{% url 'user_edit' pk=user.pk %}"><i class="material-icons">edit</i></a>
                         <a href="#!"><i class="material-icons">delete</i></a>
-                    </li>
+                    </a>
                 {% endfor %}
             </ul>
         </div>
