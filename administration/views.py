@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 
 from .models import User
+from .forms import UserForm
 
 
 def login_view(request):
@@ -20,3 +21,17 @@ class UserListView(ListView):
 
     def get_queryset(self):
         return super().get_queryset().filter(is_staff=False)
+
+
+@login_required
+def create_user(request):
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.created_by = request.user
+            instance.save()
+            return redirect('user_list')
+    else:
+        form = UserForm()
+    return render(request, 'administration/create_user.html', {'form': form})

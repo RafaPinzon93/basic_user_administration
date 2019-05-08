@@ -5,7 +5,22 @@
 {% endblock %}
 
 {% block content %}
-    {% for user in object_list %}
-        {{ user }}
-    {% endfor %}
+    <div class="row">
+        <div class="col s12">
+            <h1>Users List</h1>
+
+            <a href="{% url 'user_create' %}">Create User</a>
+            <ul>
+                {% for user in object_list %}
+                    <li>
+                        <i class="fas fa-user circle"></i>
+                        <span class="title">{{ user.first_name }}</span>
+                        <p>{{ user.last_name }}</span>
+                        <a href="#!"><i class="material-icons">edit</i></a>
+                        <a href="#!"><i class="material-icons">delete</i></a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 {% endblock %}
