@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    {{ block.super }} Users
+    {{ block.super }} - Users
 {% endblock %}
 
 {% block content %}
@@ -10,14 +10,19 @@
             <h1>Users List</h1>
 
             <a href="{% url 'user_create' %}">Create User</a>
-            <ul>
+            <ul class="collection">
                 {% for user in object_list %}
                     <a href="{% url 'user_detail' pk=user.pk %}" class="collection-item">
                         <i class="fas fa-user circle"></i>
                         <span class="title">{{ user.first_name }}</span>
                         <p>{{ user.last_name }}</span>
-                        <a href="{% url 'user_edit' pk=user.pk %}"><i class="material-icons">edit</i></a>
-                        <a href="#!"><i class="material-icons">delete</i></a>
+                        {% if user.created_by == request.user %}
+                            <a href="{% url 'user_edit' pk=user.pk %}"><i class="material-icons">edit</i></a>
+                            <form action="{% url 'user_delete' user.pk %}" method="post">
+                                {% csrf_token %}
+                                <button onClick="return confirm('Are you sure?');"><i class="material-icons">delete</i></button>
+                            </form>
+                        {% endif %}
                     </a>
                 {% endfor %}
             </ul>

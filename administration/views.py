@@ -1,13 +1,14 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic.edit import UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic.edit import UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 
 from .models import User
 from .forms import UserForm
+from .mixins import CreatedByCurrentUserMixin
 
 
 def login_view(request):
@@ -23,7 +24,7 @@ class UserListView(ListView):
     model = User
 
     def get_queryset(self):
-        return super().get_queryset().filter(is_staff=False)
+        return super().get_queryset().filter(is_staff=False).select_related('created_by')
 
 
 @login_required
@@ -40,7 +41,7 @@ def create_user(request):
     return render(request, 'administration/user_form.html', {'form': form, 'title': "Create User"})
 
 
-class UserUpdate(LoginRequiredMixin, UpdateView):
+class UserUpdate(LoginRequiredMixin, CreatedByCurrentUserMixin, UpdateView):
     model = User
     form_class = UserForm
     template_name = "administration/user_form.html"
@@ -57,3 +58,8 @@ class UserUpdate(LoginRequiredMixin, UpdateView):
 class UserDetail(LoginRequiredMixin, DetailView):
     model = User
     template_name = "administration/user_detail.html"
+
+
+class UserDelete(LoginRequiredMixin, CreatedByCurrentUserMixin, DeleteView):
+    model = User
+    success_url = reverse_lazy('user_list')
