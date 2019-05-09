@@ -3,15 +3,15 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import render, redirect
+from django.urls import reverse, reverse_lazy
 from django.views.generic.edit import UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
-from django.shortcuts import render, redirect
-from django.urls import reverse, reverse_lazy
 
-from .models import User
 from .forms import UserForm
 from .mixins import CreatedByCurrentUserMixin
+from .models import User
 
 
 def login_view(request):

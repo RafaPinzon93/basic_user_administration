@@ -15,7 +15,6 @@ class UserForm(ModelForm):
 
         for field in self.Meta.required:
             self.fields[field].required = True
-            self.fields[field].widget.attrs['class'] = 'form-control'
 
     class Meta:
         model = User
