@@ -17,13 +17,13 @@ class User(AbstractUser):
 
 
 @receiver(pre_save, sender=User)
-def assign_username(sender, instance, **kwargs):
+def assign_username_if_empty(sender, instance, **kwargs):
     if not instance.username:
         instance.username = uuid.uuid4().hex[:30]
 
 
 @receiver(post_save, sender=UserSocialAuth)
-def set_adiminstrator_for_user(sender, instance, created, **kwargs):
+def set_adiminstrator_for_user_created_by_social(sender, instance, created, **kwargs):
     if created:
         user = instance.user
         user.is_staff = True
