@@ -4,11 +4,11 @@
 {% load app_filters %} 
 <h1>User</h1>
 <div class="row">
-    <div class="col">
+    <div class="col-12">
         <ul>
-            <li>{{object.first_name}}</li>
-            <li>{{object.last_name}}</li>
-            <li>{{object.iban | iban_format}}</li>
+            <li>First Name: {{object.first_name}}</li>
+            <li>Last Name: {{object.last_name}}</li>
+            <li>IBAN: {{object.iban | iban_format}}</li>
         </ul>
     </div>
 </div>

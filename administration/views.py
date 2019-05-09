@@ -1,3 +1,4 @@
+from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import UpdateView, DeleteView
@@ -17,6 +18,11 @@ def login_view(request):
         return redirect(redirect_url)
     else:
         return render(request, 'index.html')
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('index')
 
 
 class UserListView(LoginRequiredMixin, ListView):

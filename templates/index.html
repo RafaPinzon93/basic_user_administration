@@ -5,20 +5,18 @@
 {% endblock %}
 
 {% block content %}
-    <div class="parallax-container">
-        <div class="section no-pad-bot">
-            <div class="container">
-                <br><br>
-                <h1 class="header center red-text text-lighten-2">User Administrator</h1>
-
-                <div class="row center">
-                    <a class="waves-effect waves-light btn-large social google red lighten-1"
-                        href="{% url 'social:begin' 'google-oauth2' %}" >
-                        <i class="fab fa-google"></i> Sign in with google
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body google">
+                    <h1 class="text-center">User Administrator</h1>
+                    <a href="{% url 'social:begin' 'google-oauth2' %}" 
+                       class="btn btn-lg btn-google btn-block text-uppercase"
+                       type="submit">
+                       <i class="fab fa-google mr-2"></i>
+                       Sign in with Google
                     </a>
                 </div>
-                <br><br>
-
             </div>
         </div>
     </div>
