@@ -41,3 +41,6 @@ DATABASES = {
 2. This will redirect you to your users list page.
 3. In the user list page, you can **create** your own users, **see** all the users created, and **update** or **delete** your own users.
 4. When you **create** or **edit** an user, you can add the bank account data (**IBAN**). The system will validate the IBAN field checking the country code, the checksum digits and the Basic Bank Account Number.
+
+### Trello for this Project
+[User Administrator Trello](https://trello.com/b/TW3ZNnw0/user-administrator)
