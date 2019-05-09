@@ -5,7 +5,6 @@ pip-selfcheck.json
 *.sublime-workspace
 *.sqlite3
 *.swp
-static/
 media/
 settings.json
 commands.txt

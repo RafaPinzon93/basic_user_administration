@@ -1,0 +1,35 @@
+.btn-google {
+    color: white;
+    background-color: #ea4335;
+}
+
+.google h1 {
+    color: #ea4335;
+}
+
+a:hover {
+    color: rgb(126, 126, 126);
+}
+
+a {
+    color: black;
+}
+
+.table-title .add-new {
+    float: right;
+    height: 30px;
+    font-weight: bold;
+    font-size: 12px;
+    text-shadow: none;
+    min-width: 100px;
+    border-radius: 50px;
+    line-height: 13px;
+}
+
+.table-title .add-new i {
+    margin-right: 4px;
+}
+
+.form-table {
+    display: inline;
+}
