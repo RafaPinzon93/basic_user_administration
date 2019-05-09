@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'social_django',
+    'crispy_forms',
 
     'administration',
 ]
@@ -116,7 +117,7 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'wcS5SBP6ejOrUeOeE0O7YLUL'
 
 SOCIAL_AUTH_POSTGRES_JSONFIELD = True
 
-LOGIN_URL = '/auth/login/google-oauth2/'
+LOGIN_URL = '/'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
@@ -147,3 +148,5 @@ STATICFILES_DIRS = [
 ]
 
 AUTH_USER_MODEL = 'administration.User'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
