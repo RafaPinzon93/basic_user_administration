@@ -19,7 +19,7 @@ def login_view(request):
         return render(request, 'index.html')
 
 
-class UserListView(ListView):
+class UserListView(LoginRequiredMixin, ListView):
     template_name = 'administration/user_list.html'
     model = User
 

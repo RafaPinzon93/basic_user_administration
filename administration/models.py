@@ -5,11 +5,13 @@ from django.db import models
 from django.db.models.signals import pre_save, post_save
 from django.dispatch import receiver
 
+from internationalflavor.iban import IBANField
+
 from social_django.models import UserSocialAuth
 
 
 class User(AbstractUser):
-    iban = models.CharField(max_length=34)
+    iban = IBANField()
     created_by = models.ForeignKey(
         'self', on_delete=models.CASCADE, related_name="users", blank=True, null=True)
 

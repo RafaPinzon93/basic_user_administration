@@ -1,8 +1,20 @@
 from django.forms import ModelForm
+
+from internationalflavor.iban import IBANFormField
+
 from .models import User
 
 
 class UserForm(ModelForm):
+    iban = IBANFormField()
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        for field in self.Meta.required:
+            self.fields[field].required = True
+
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'iban']
+        required = ['first_name', 'last_name', 'iban']
