@@ -30,6 +30,7 @@ def logout_view(request):
 class UserListView(LoginRequiredMixin, ListView):
     template_name = 'administration/user_list.html'
     model = User
+    ordering = ['first_name', 'last_name']
 
     def get_queryset(self):
         return super().get_queryset().filter(is_staff=False).select_related('created_by')

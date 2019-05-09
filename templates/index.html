@@ -5,18 +5,16 @@
 {% endblock %}
 
 {% block content %}
-    <div class="row">
+    <div class="row h-100">
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-            <div class="card card-signin my-5">
-                <div class="card-body google">
-                    <h1 class="text-center">User Administrator</h1>
-                    <a href="{% url 'social:begin' 'google-oauth2' %}" 
-                       class="btn btn-lg btn-google btn-block text-uppercase"
-                       type="submit">
-                       <i class="fab fa-google mr-2"></i>
-                       Sign in with Google
-                    </a>
-                </div>
+            <div class="google">
+                <h1 class="text-center">User Administrator</h1>
+                <a href="{% url 'social:begin' 'google-oauth2' %}" 
+                    class="btn btn-lg btn-google btn-block text-uppercase"
+                    type="submit">
+                    <i class="fab fa-google mr-2"></i>
+                    Sign in with Google
+                </a>
             </div>
         </div>
     </div>
